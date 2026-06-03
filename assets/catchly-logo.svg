@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-label="Catchly">
+  <rect x="0" y="0" width="520" height="140" fill="none"/>
+  <g transform="translate(10,14)">
+    <rect x="18" y="10" width="82" height="82" rx="8" fill="#FFD400" transform="rotate(14 59 51)"/>
+    <polygon points="60,0 110,68 24,28" fill="#FE007D"/>
+    <rect x="22" y="43" width="42" height="42" fill="#FE007D" transform="rotate(-38 43 64)"/>
+    <circle cx="96" cy="58" r="28" fill="#FE007D"/>
+    <ellipse cx="70" cy="94" rx="16" ry="36" fill="#541388" transform="rotate(8 70 94)"/>
+  </g>
+  <text x="145" y="92" font-family="Arial Black, Nunito, sans-serif" font-size="62" font-weight="900" fill="#000">Catchly</text>
+</svg>
