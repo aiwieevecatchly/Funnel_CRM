@@ -123,7 +123,7 @@
 const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s));
 const LS='catchly_sales_v23_leads', LSC='catchly_sales_v23_current', LSS='catchly_sales_v23_settings';
 const LSSC='catchly_sales_v23_scripts'; /* eigener Key – NICHT settings, siehe saveScripts() */
-const APP_VERSION='2.5';
+const APP_VERSION='2.6';
 let leads=loadJSON(LS,[]).map(migrateLead), currentId=localStorage.getItem(LSC)||'', settings=loadJSON(LSS,{name:'Eve Wietlisbach',email:'ai.wieeve@gmail.com',phone:'079 419 92 82',duration:'30 Minuten',zoom:'',calendly:'',fahrplanUrl:'',signature:'Liebe Grüsse\nEve',goalCalls:'80',goalMeetings:'5',goalDecisionRate:'10',mailProvider:'gmail',gmailAuthUser:''});let modal={script:null,i:0};
 let period={type:'week',anchor:periodRange('week',new Date()).start};
 let selected=new Set();
@@ -785,7 +785,9 @@ function periodLabel(type,range){
   return `KW ${iw.week} · ${f(s)}–${f(last)}.${iw.year}`;
 }
 function prevLabel(type){return type==='day'?'Vortag':type==='month'?'Vormonat':type==='year'?'Vorjahr':'Vorwoche'}
-function setPeriodType(t){period.type=t;period.anchor=periodRange(t,period.anchor).start}
+/* Beim Umschalten der Granularität immer auf die AKTUELLE Periode ankern (heute/diese Woche/…),
+   nicht aus dem alten Anker ableiten – sonst zeigte „Tag“ den Wochenanfang (Montag) statt heute. */
+function setPeriodType(t){period.type=t;period.anchor=periodRange(t,new Date()).start}
 
 initEvents();renderAll();const _v=document.getElementById('appVer');if(_v)_v.textContent=APP_VERSION;
 })();
